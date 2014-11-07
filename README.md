@@ -1,4 +1,4 @@
-Computador
+﻿Computador
 ==========
 
-Trabalho da disciplina de Programação II
+Trabalho desenvolvido em Java relacionado a disciplina de Programação II
