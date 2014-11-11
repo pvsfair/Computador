@@ -10,10 +10,10 @@ package computador.Generalizacoes;
  * @author Paulo
  */
 public interface Device {
-    
+
     public void ligar();
-    
+
     public void desligar();
-    
+
     public boolean isOn();
 }

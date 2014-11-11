@@ -30,7 +30,7 @@ public abstract class Computador implements Device {
         this.placaDeVideoModelo = "NVidia gtx650";
         this.processadorModelo = "Intel core I5-4460T";
     }
-    
+
     public Computador(int HD, int RAM, int VRAM, float processadorGHz, String placaDeVideoModelo, String processadorModelo) {
         this.HD = HD;
         this.RAM = RAM;
@@ -46,7 +46,7 @@ public abstract class Computador implements Device {
 
     @Override
     public void ligar() {
-        if(!isOn()) {
+        if (!isOn()) {
             System.out.println("Ligando o computador.");
             this.OnOff = true;
             Computador.numComputadoresLigador++;
@@ -59,13 +59,12 @@ public abstract class Computador implements Device {
 
     @Override
     public void desligar() {
-        if(isOn()){
+        if (isOn()) {
             System.out.println("Finalizando SO.");
             System.out.println("Desligando o computador.");
             this.OnOff = false;
             Computador.numComputadoresLigador--;
-        }
-        else{
+        } else {
             System.out.println("Voce nao precisa desligar um computador que ja esta desligado.");
         }
     }
@@ -76,11 +75,10 @@ public abstract class Computador implements Device {
     }
 
     public void reiniciar() {
-        if(isOn()){
+        if (isOn()) {
             this.desligar();
             this.ligar();
-        }
-        else{
+        } else {
             System.out.println("Nao faz sentido reiniciar um computador que esta desligado.");
         }
     }
@@ -89,87 +87,50 @@ public abstract class Computador implements Device {
 
     public abstract boolean executaPrograma();
 
-    /**
-     * @return O espaço de armazenamento do seu HD
-     */
     public int getHD() {
         return HD;
     }
 
-    /**
-     * @param HD O tamanho do armazenamento do novo HD
-     */
     public void setHD(int HD) {
         this.HD = HD;
     }
 
-    /**
-     * @return A quantidade de memória RAM
-     */
     public int getRAM() {
         return RAM;
     }
 
-    /**
-     * @param RAM A quantidade de memória da nova memória RAM
-     */
     public void setRAM(int RAM) {
         this.RAM = RAM;
     }
 
-    /**
-     * @return A quantidade de memória VRAM
-     */
     public int getPlacaDeVideoRAM() {
         return placaDeVideoRAM;
     }
 
-    /**
-     * @param placaDeVideoRAM A nova quantidade de merória VRAM da nova placa de
-     * video
-     */
     public void setPlacaDeVideoRAM(int placaDeVideoRAM) {
         this.placaDeVideoRAM = placaDeVideoRAM;
     }
 
-    /**
-     * @return A frequencia do processador
-     */
     public float getProcessadorGHz() {
         return processadorGHz;
     }
 
-    /**
-     * @param processadorGHz A quantidade de GHZ do novo processador
-     */
     public void setProcessadorGHz(int processadorGHz) {
         this.processadorGHz = processadorGHz;
     }
 
-    /**
-     * @return O nome do modelo da placa de vídeo
-     */
     public String getPlacaDeVideoModelo() {
         return placaDeVideoModelo;
     }
 
-    /**
-     * @param placaDeVideoModelo O nome da sua nova placa e video
-     */
     public void setPlacaDeVideoModelo(String placaDeVideoModelo) {
         this.placaDeVideoModelo = placaDeVideoModelo;
     }
 
-    /**
-     * @return O nome do modelo processador
-     */
     public String getProcessadorModelo() {
         return processadorModelo;
     }
 
-    /**
-     * @param processadorModelo O nome do modelo do seu novo processador
-     */
     public void setProcessadorModelo(String processadorModelo) {
         this.processadorModelo = processadorModelo;
     }
