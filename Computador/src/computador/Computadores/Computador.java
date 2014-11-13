@@ -6,6 +6,7 @@
 package computador.Computadores;
 
 import computador.Generalizacoes.Device;
+import java.util.ArrayList;
 
 /**
  *
@@ -83,6 +84,14 @@ public abstract class Computador implements Device {
             this.ligar();
         } else {
             System.out.println("Nao faz sentido reiniciar um computador que esta desligado.");
+        }
+    }
+    
+    public static void mostrarComputadores(ArrayList<Computador> computadores){
+        int i = 1;
+        for (Computador computador : computadores) {
+            System.out.println(i + " - " + computador + ((computador.isOn()) ? " Ligado" : " Desligado"));
+            i++;
         }
     }
 
