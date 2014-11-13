@@ -11,9 +11,9 @@ package computador.Generalizacoes;
  */
 public interface Device {
 
-    public void ligar();
+    public boolean ligar();
 
-    public void desligar();
+    public boolean desligar();
 
     public boolean isOn();
 }

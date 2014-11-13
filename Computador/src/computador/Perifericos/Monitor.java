@@ -36,22 +36,26 @@ public class Monitor implements Device {
     }
 
     @Override
-    public void ligar() {
+    public boolean ligar() {
         if (!isOn()) {
             System.out.println("Ligando o monitor.");
             this.OnOff = true;
+            return true;
         } else {
             System.out.println("O seu monitor ja esta ligado.");
+            return false;
         }
     }
 
     @Override
-    public void desligar() {
+    public boolean desligar() {
         if (isOn()) {
             System.out.println("Desligando o monitor.");
             this.OnOff = false;
+            return true;
         } else {
             System.out.println("Voce nao precisa desligar um monitor que ja esta desligado.");
+            return false;
         }
     }
 
