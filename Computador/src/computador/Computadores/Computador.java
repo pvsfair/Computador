@@ -16,7 +16,7 @@ public abstract class Computador implements Device {
     protected static int numComputadoresLigados = 0;
     protected int HD;
     protected int RAM;
-    protected int placaDeVideoRAM;
+    protected int VRAM;
     protected float processadorGHz;
     protected String placaDeVideoModelo;
     protected String processadorModelo;
@@ -26,7 +26,7 @@ public abstract class Computador implements Device {
     public Computador() {
         this.HD = 500;
         this.RAM = 4;
-        this.placaDeVideoRAM = 1;
+        this.VRAM = 1;
         this.processadorGHz = 1.9f;
         this.placaDeVideoModelo = "NVidia gtx650";
         this.processadorModelo = "Intel core I5-4460T";
@@ -36,7 +36,7 @@ public abstract class Computador implements Device {
     public Computador(int HD, int RAM, int VRAM, float processadorGHz, String placaDeVideoModelo, String processadorModelo) {
         this.setHD(HD);
         this.setRAM(RAM);
-        this.setPlacaDeVideoRAM(VRAM);
+        this.setVRAM(VRAM);
         this.setProcessadorGHz(processadorGHz);
         this.setPlacaDeVideoModelo(placaDeVideoModelo);
         this.setProcessadorModelo(processadorModelo);
@@ -124,17 +124,17 @@ public abstract class Computador implements Device {
         }
     }
 
-    public int getPlacaDeVideoRAM() {
-        return placaDeVideoRAM;
+    public int getVRAM() {
+        return VRAM;
     }
 
-    public void setPlacaDeVideoRAM(int placaDeVideoRAM) {
-        if (placaDeVideoRAM < 0) {
+    public void setVRAM(int VRAM) {
+        if (VRAM < 0) {
             System.out.println("Seu computador nao pode ter memória VRAM negativa");
             System.out.println("Sua VRAM é agoraigual a 0.");
-            this.placaDeVideoRAM = 0;
+            this.VRAM = 0;
         } else {
-            this.placaDeVideoRAM = placaDeVideoRAM;
+            this.VRAM = VRAM;
         }
     }
 

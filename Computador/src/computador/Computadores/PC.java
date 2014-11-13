@@ -35,7 +35,9 @@ public class PC extends Computador {
         this.teclado = teclado;
     }
 
-    public PC(SO sistemaOperacional, Monitor monitor, Teclado teclado, int HD, int RAM, int VRAM, float processadorGHz, String placaDeVideoModelo, String processadorModelo) {
+    public PC(SO sistemaOperacional, Monitor monitor, Teclado teclado,
+            int HD, int RAM, int VRAM, float processadorGHz,
+            String placaDeVideoModelo, String processadorModelo) {
         super(HD, RAM, VRAM, processadorGHz, placaDeVideoModelo, processadorModelo);
         this.sistemaOperacional = sistemaOperacional;
         this.monitor = monitor;
