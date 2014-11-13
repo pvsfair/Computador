@@ -188,4 +188,8 @@ public abstract class Computador implements Device {
         }
     }
 
+    public String[] getProgramasPadroesInstalados() {
+        return programasPadroesInstalados;
+    }
+
 }

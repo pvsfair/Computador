@@ -10,6 +10,9 @@ import computador.Perifericos.Teclado;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sound.midi.SysexMessage;
 
 /**
  *
@@ -22,6 +25,9 @@ public class Main {
      */
     public static void main(String[] args) {
         int opcao = 0;
+        int opcaoInterna = 0;
+        int pcUsar;
+        int iter = 0;
         ArrayList<Computador> computadores = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         computadores.add(new PC());
@@ -29,17 +35,31 @@ public class Main {
         computadores.add(new Mac());
         computadores.add(new Mac(Mac.MacOsX.MOUNTAIN_LION, new Monitor(), new Teclado()));
         do {
-            System.out.println("Você tem estes computadores na sua rede:");
+            try {
+                Thread.sleep(2500);
+            } catch (InterruptedException ex) {
+                System.out.println("Problema no Sleep.");
+            }
+            //O comando abaixo limpa a tela no java...
+            System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println("\nVocê tem estes computadores na sua rede:");
             Computador.mostrarComputadores(computadores);
-            System.out.println("1 - Ligar/Desligar Computador");
+            System.out.println("\n\n\n1 - Ligar/Desligar Computador");
             System.out.println("2 - Executar Programa em Computador");
             System.out.println("3 - Sair");
+            opcao = input.nextInt();
             switch (opcao) {
                 case 1:
                     System.out.println("Qual Computador você deseja ligar/desligar?");
-                    int pcUsar = input.nextInt();
+                    pcUsar = input.nextInt();
+                    while (pcUsar >= computadores.size() && pcUsar < 0) {
+                        System.out.println("entrada Inválida, tente novamente.");
+                        pcUsar = input.nextInt();
+                    }
+                    pcUsar--;
                     System.out.println("Você deseja ligar ou desligar o " + computadores.get(pcUsar) + "? <l/d>");
-                    String ld = input.nextLine();
+                    String ld = input.next();
+                    System.out.println();
                     if (ld.equalsIgnoreCase("l")) {
                         computadores.get(pcUsar).ligar();
                     } else if (ld.equalsIgnoreCase("d")) {
@@ -49,10 +69,27 @@ public class Main {
                     }
                     break;
                 case 2:
+                    System.out.println("Qual Computador você deseja usar?");
+                    pcUsar = input.nextInt();
+                    while (pcUsar >= computadores.size() && pcUsar < 0) {
+                        System.out.println("entrada Inválida, tente novamente.");
+                        pcUsar = input.nextInt();
+                    }
+                    pcUsar--;
+                    iter = 0;
+                    for (String programa : computadores.get(pcUsar).getProgramasPadroesInstalados()) {
+                        iter++;
+                        System.out.println(iter + " - " + programa);
+                    }
+                    System.out.println("Qual dos programas você deseja que seja executado?");
+                    opcaoInterna = input.nextInt() - 1;
+                    
+                    System.out.println("Executando: " + computadores.get(pcUsar).getProgramasPadroesInstalados()[opcaoInterna]);
                     break;
                 case 3:
                     break;
                 default:
+                    System.out.println("Opção inválida.");
             }
         } while (opcao != 3);
         System.out.println("Desligando todos os Computadores...");
@@ -61,16 +98,6 @@ public class Main {
                 computador.desligar();
             }
         }
-        System.out.println("\nVocê deseja ligar algum computador?");
-        String sn = input.nextLine();
-        if (sn.equalsIgnoreCase("s")) {
-            System.out.println("Qual computador você deseja ligar?");
-            int pcLigar = input.nextInt();
-            computadores.get(pcLigar - 1).ligar();
-        }
-        System.out.println("Você deseja usar algum computador?");
-        computadores.get(1).executaPrograma(1);
-
     }
 
 }
