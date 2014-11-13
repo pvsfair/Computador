@@ -5,7 +5,10 @@
  */
 package computador.Computadores;
 
+import computador.Perifericos.Monitor;
+import computador.Perifericos.Teclado;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,12 +20,14 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Ola Mundo");
-        try {
-            System.in.read();
-        } catch (IOException ex) {
-            System.out.println("Erro");
-        }
+        ArrayList<Computador> computadores = new ArrayList<>();
+        computadores.add(new PC());
+        computadores.add(new PC(PC.SO.UBUNTU, new Monitor(), new Teclado(), 1024, 2048, 1024, 1.2f, "gtx650", "Intel Core i5"));
+        computadores.add(new Mac());
+        computadores.add(new Mac(Mac.MacOsX.MOUNTAIN_LION, new Monitor(), new Teclado()));
+        
+        computadores.get(1).executaPrograma(1);
+        
     }
     
 }
